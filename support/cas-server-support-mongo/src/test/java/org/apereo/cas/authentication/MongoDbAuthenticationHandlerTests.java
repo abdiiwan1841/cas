@@ -19,6 +19,7 @@ import org.apereo.cas.config.CasPersonDirectoryConfiguration;
 import org.apereo.cas.config.support.CasWebApplicationServiceFactoryConfiguration;
 import org.apereo.cas.util.CollectionUtils;
 
+import lombok.extern.slf4j.Slf4j;
 import lombok.val;
 import org.junit.Before;
 import org.junit.ClassRule;
@@ -70,10 +71,12 @@ import static org.junit.Assert.*;
         RefreshAutoConfiguration.class})
 @EnableScheduling
 @TestPropertySource(properties = {
+    "cas.authn.mongo.collectionName=users",
     "cas.authn.mongo.mongoHostUri=mongodb://root:secret@localhost:27017/users",
     "cas.authn.mongo.attributes=loc,state",
     "cas.authn.pac4j.typedIdUsed=false"
     })
+@Slf4j
 public class MongoDbAuthenticationHandlerTests {
 
     @ClassRule
@@ -95,6 +98,7 @@ public class MongoDbAuthenticationHandlerTests {
         val profile = new MongoProfile();
         profile.setId("CASUSER");
         profile.addAttributes(CollectionUtils.wrap("loc", "test", "state", "passing", "username", "u1"));
+        LOGGER.debug("using: [{}/{}]", mongoProfileService.getUsersDatabase(), mongoProfileService.getUsersCollection());
         mongoProfileService.create(profile, "p1");
 
         RequestContextHolder.setRequestAttributes(
