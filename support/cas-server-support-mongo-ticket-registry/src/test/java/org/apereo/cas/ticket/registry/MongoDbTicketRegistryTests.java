@@ -72,6 +72,7 @@ import java.util.Collection;
 @EnableScheduling
 @TestPropertySource(properties = {
     "cas.ticket.registry.mongo.databaseName=ticket-registry",
+    "cas.ticket.registry.mongo.authenticationDatabaseName=admin",
     "cas.ticket.registry.mongo.host=localhost",
     "cas.ticket.registry.mongo.port=27017",
     "cas.ticket.registry.mongo.dropCollection=true",
