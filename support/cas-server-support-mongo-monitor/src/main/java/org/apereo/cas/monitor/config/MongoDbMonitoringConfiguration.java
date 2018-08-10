@@ -28,7 +28,7 @@ public class MongoDbMonitoringConfiguration {
 
     @Bean
     @RefreshScope
-    public MongoTemplate healthIndicatorMongoTemplate() {
+    public MongoTemplate mongoHealthIndicatorTemplate() {
         val factory = new MongoDbConnectionFactory();
         val mongoProps = casProperties.getMonitor().getMongo();
         return  factory.buildMongoTemplate(mongoProps);
@@ -39,7 +39,7 @@ public class MongoDbMonitoringConfiguration {
     @Bean
     @RefreshScope
     public HealthIndicator mongoHealthIndicator() {
-        return new MongoDbHealthIndicator(healthIndicatorMongoTemplate(),
+        return new MongoDbHealthIndicator(mongoHealthIndicatorTemplate(),
             casProperties.getMonitor().getWarn().getEvictionThreshold(),
             casProperties.getMonitor().getWarn().getThreshold());
     }
