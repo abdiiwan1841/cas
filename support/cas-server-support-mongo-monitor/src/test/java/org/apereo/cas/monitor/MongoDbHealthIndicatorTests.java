@@ -76,6 +76,7 @@ import static org.junit.Assert.*;
     "cas.monitor.mongo.password=secret",
     "cas.monitor.mongo.host=localhost",
     "cas.monitor.mongo.port=27017",
+    "cas.monitor.mongo.authenticationDatabaseName=admin",
     "cas.monitor.mongo.databaseName=monitor"
 })
 public class MongoDbHealthIndicatorTests {
