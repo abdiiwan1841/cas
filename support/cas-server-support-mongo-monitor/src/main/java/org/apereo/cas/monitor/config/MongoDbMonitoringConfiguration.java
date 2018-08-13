@@ -31,7 +31,7 @@ public class MongoDbMonitoringConfiguration {
     public MongoTemplate mongoHealthIndicatorTemplate() {
         val factory = new MongoDbConnectionFactory();
         val mongoProps = casProperties.getMonitor().getMongo();
-        return  factory.buildMongoTemplate(mongoProps);
+        return factory.buildMongoTemplate(mongoProps);
     }
 
 
