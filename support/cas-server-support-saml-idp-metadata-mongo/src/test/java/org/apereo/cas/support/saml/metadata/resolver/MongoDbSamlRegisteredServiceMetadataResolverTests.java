@@ -30,6 +30,7 @@ import static org.junit.Assert.*;
     "cas.authn.samlIdp.metadata.mongo.userId=root",
     "cas.authn.samlIdp.metadata.mongo.password=secret",
     "cas.authn.samlIdp.metadata.mongo.authenticationDatabaseName=admin",
+    "cas.authn.samlIdp.metadata.mongo.idpMetadataCollection=saml-idp-metadata-resolver",
     "cas.authn.samlIdp.metadata.location=file:/tmp"
     })
 public class MongoDbSamlRegisteredServiceMetadataResolverTests extends BaseMongoDbSamlMetadataTests {
